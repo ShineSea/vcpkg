@@ -114,8 +114,16 @@ If you do not know the SHA512, add it as 'SHA512 0' and retry.")
         message(FATAL_ERROR "Downloads are disabled, but '${downloaded_file_path}' does not exist.")
     endif()
 
+    
     vcpkg_list(SET params "x-download" "${arg_FILENAME}")
     foreach(url IN LISTS arg_URLS)
+#        string(REPLACE "http://download.savannah.nongnu.org/releases/gta/" "https://marlam.de/gta/releases/" url "${url}")
+#        string(REPLACE "https://github.com/" "https://gitproxy.click/https://github.com/" url "${url}")
+#        string(REPLACE "https://ftp.gnu.org/" "https://mirrors.aliyun.com/" url "${url}")
+#        string(REPLACE "https://raw.githubusercontent.com/" "https://gitproxy.click/https://raw.githubusercontent.com/" url "${url}")
+#       string(REPLACE "http://ftp.gnu.org/pub/gnu/" "https://mirrors.aliyun.com/gnu/" url "${url}")
+#        string(REPLACE "https://ftp.postgresql.org/pub/" "https://mirrors.tuna.tsinghua.edu.cn/postgresql/" url "${url}")
+#        string(REPLACE "https://support.hdfgroup.org/ftp/lib-external/szip/2.1.1/src/" "https://distfiles.macports.org/szip/" url "${url}")
         vcpkg_list(APPEND params "--url=${url}")
     endforeach()
 
